@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastrar Livro — Livraria Atlântica</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Estilos específicos do formulário ── */
+    .form-container {
+      max-width: 680px;
+      margin: 3rem auto;
+      padding: 0 2rem 4rem;
+    }
+ 
+    .form-titulo {
+      font-family: var(--fonte-titulo);
+      font-size: 2.4rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.4rem;
+    }
+ 
+    .form-subtitulo {
+      color: var(--cor-texto-suave);
+      margin-bottom: 2.5rem;
+      font-size: 0.95rem;
+    }
+ 
+    .form-card {
+      background: var(--cor-superficie);
+      border: 1px solid var(--cor-borda);
+      border-radius: var(--raio-lg);
+      padding: 2.5rem;
+    }
+ 
+    .form-grupo {
+      margin-bottom: 1.5rem;
+    }
+ 
+    .form-grupo label {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--cor-texto-suave);
+      margin-bottom: 0.5rem;
+    }
+ 
+    .form-grupo label .obrigatorio {
+      color: var(--cor-destaque);
+      margin-left: 2px;
+    }
+ 
+    .form-grupo input,
+    .form-grupo select,
+    .form-grupo textarea {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border: 1px solid var(--cor-borda);
+      border-radius: var(--raio);
+      font-family: var(--fonte-corpo);
+      font-size: 0.95rem;
+      color: var(--cor-texto);
+      background: var(--cor-fundo);
+      transition: border-color var(--transicao), box-shadow var(--transicao);
+      outline: none;
+    }
+ 
+    .form-grupo input:focus,
+    .form-grupo select:focus,
+    .form-grupo textarea:focus {
+      border-color: var(--cor-texto);
+      box-shadow: 0 0 0 3px rgba(26,18,8,0.08);
+    }
+ 
+    .form-grupo textarea {
+      min-height: 110px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+ 
+    .form-linha {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+ 
+    .form-linha-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+ 
+    .form-separador {
+      height: 1px;
+      background: var(--cor-borda);
+      margin: 2rem 0;
+    }
+ 
+    .form-secao-titulo {
+      font-family: var(--fonte-titulo);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      color: var(--cor-texto);
+    }
+ 
+    .form-acoes {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      align-items: center;
+    }
+ 
+    .btn-cancelar {
+      padding: 0.7rem 1.5rem;
+      border: 1px solid var(--cor-borda-forte);
+      border-radius: var(--raio);
+      background: transparent;
+      font-family: var(--fonte-corpo);
+      font-size: 0.85rem;
+      color: var(--cor-texto-suave);
+      cursor: pointer;
+      transition: all var(--transicao);
+      text-decoration: none;
+    }
+ 
+    .btn-cancelar:hover {
+      border-color: var(--cor-texto);
+      color: var(--cor-texto);
+    }
+ 
+    .mensagem-sucesso,
+    .mensagem-erro {
+      display: none;
+      padding: 1rem 1.25rem;
+      border-radius: var(--raio);
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+    }
+ 
+    .mensagem-sucesso {
+      background: #dcfce7;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+ 
+    .mensagem-erro {
+      background: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+ 
+    .mensagem-sucesso.visivel,
+    .mensagem-erro.visivel {
+      display: block;
+    }
+ 
+    @media (max-width: 600px) {
+      .form-linha, .form-linha-3 { grid-template-columns: 1fr; }
+      .form-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+ 
+  <!-- ===================== CABEÇALHO ===================== -->
+  <header class="cabecalho">
+    <div class="cabecalho-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-principal">Livraria Atlântica</span>
+        <span class="logo-sub">Est. desde 2024</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Acervo</a></li>
+          <li><a href="cadastro_livro.html">Cadastrar Livro</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+ 
+  <!-- ===================== FORMULÁRIO ===================== -->
+  <main>
+    <div class="form-container">
+ 
+      <a href="index.html" class="detalhe-voltar" style="margin-bottom:1.5rem; display:inline-flex;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px">
+          <path d="M19 12H5M12 5l-7 7 7 7"/>
+        </svg>
+        Voltar ao acervo
+      </a>
+ 
+      <h1 class="form-titulo">Cadastrar Livro</h1>
+      <p class="form-subtitulo">Preencha os campos abaixo para adicionar um livro ao acervo.</p>
+ 
+      <div class="form-card">
+        <div id="form-livro">
+ 
+          <!-- Informações principais -->
+          <p class="form-secao-titulo">Informações principais</p>
+ 
+          <div class="form-linha">
+            <div class="form-grupo">
+              <label for="titulo">Título <span class="obrigatorio">*</span></label>
+              <input type="text" id="titulo" placeholder="Ex.: O Nome do Vento" required />
+            </div>
+            <div class="form-grupo">
+              <label for="autor">Autor <span class="obrigatorio">*</span></label>
+              <input type="text" id="autor" placeholder="Ex.: Patrick Rothfuss" required />
+            </div>
+          </div>
+ 
+          <div class="form-grupo">
+            <label for="descricaoCurta">Descrição curta <span class="obrigatorio">*</span></label>
+            <input type="text" id="descricaoCurta" placeholder="Uma frase que resuma o livro" required />
+          </div>
+ 
+          <div class="form-grupo">
+            <label for="descricaoCompleta">Descrição completa</label>
+            <textarea id="descricaoCompleta" placeholder="Sinopse detalhada, contexto da obra, por que é importante…"></textarea>
+          </div>
+ 
+          <div class="form-separador"></div>
+ 
+          <!-- Classificação e preço -->
+          <p class="form-secao-titulo">Classificação e preço</p>
+ 
+          <div class="form-linha">
+            <div class="form-grupo">
+              <label for="categoria">Categoria <span class="obrigatorio">*</span></label>
+              <select id="categoria" required>
+                <option value="" disabled selected>Selecione…</option>
+                <option value="Fantasia">Fantasia</option>
+                <option value="Ficção Científica">Ficção Científica</option>
+                <option value="Literatura Brasileira">Literatura Brasileira</option>
+                <option value="Realismo Mágico">Realismo Mágico</option>
+                <option value="Não-ficção">Não-ficção</option>
+                <option value="Literatura Infantojuvenil">Literatura Infantojuvenil</option>
+                <option value="Romance">Romance</option>
+                <option value="Suspense">Suspense</option>
+                <option value="Outro">Outro</option>
+              </select>
+            </div>
+            <div class="form-grupo">
+              <label for="preco">Preço (R$) <span class="obrigatorio">*</span></label>
+              <input type="number" id="preco" placeholder="Ex.: 49.90" min="0" step="0.01" required />
+            </div>
+          </div>
+ 
+          <div class="form-linha-3">
+            <div class="form-grupo">
+              <label for="anoPublicacao">Ano de publicação</label>
+              <input type="number" id="anoPublicacao" placeholder="Ex.: 2007" min="1000" max="2099" />
+            </div>
+            <div class="form-grupo">
+              <label for="paginas">Nº de páginas</label>
+              <input type="number" id="paginas" placeholder="Ex.: 662" min="1" />
+            </div>
+            <div class="form-grupo">
+              <label for="editora">Editora</label>
+              <input type="text" id="editora" placeholder="Ex.: Arqueiro" />
+            </div>
+          </div>
+ 
+          <div class="form-separador"></div>
+ 
+          <!-- Imagem e extras -->
+          <p class="form-secao-titulo">Imagem e extras</p>
+ 
+          <div class="form-grupo">
+            <label for="imagem">URL da capa</label>
+            <input type="url" id="imagem" placeholder="https://… (endereço da imagem da capa)" />
+          </div>
+ 
+          <div class="form-grupo">
+            <label for="tags">Tags (separadas por vírgula)</label>
+            <input type="text" id="tags" placeholder="Ex.: clássico, aventura, magia" />
+          </div>
+ 
+          <div class="form-grupo" style="display:flex; align-items:center; gap:0.75rem;">
+            <input type="checkbox" id="destaque" style="width:auto; cursor:pointer;" />
+            <label for="destaque" style="text-transform:none; font-size:0.9rem; letter-spacing:0; cursor:pointer; margin:0;">
+              Marcar como livro em destaque
+            </label>
+          </div>
+ 
+          <!-- Ações -->
+          <div class="form-acoes">
+            <button class="btn-primario" onclick="cadastrarLivro()">Cadastrar livro</button>
+            <a href="index.html" class="btn-cancelar">Cancelar</a>
+          </div>
+ 
+          <!-- Mensagens de feedback -->
+          <div class="mensagem-sucesso" id="msg-sucesso">
+            ✓ Livro cadastrado com sucesso! <a href="index.html">Ver acervo →</a>
+          </div>
+          <div class="mensagem-erro" id="msg-erro">
+            ✗ Não foi possível cadastrar. Verifique se o JSON Server está rodando.
+          </div>
+ 
+        </div>
+      </div>
+    </div>
+  </main>
+ 
+  <!-- ===================== RODAPÉ ===================== -->
+  <footer class="rodape">
+    <p>
+      <strong>Livraria Atlântica</strong> &mdash;
+      Atividade Prática: JSON Server &amp; Fetch API &mdash;
+      Dados servidos por <code>localhost:3000</code>
+    </p>
+  </footer>
+ 
+  <script>
+    /**
+     * Lê os campos do formulário, valida e faz POST /livros no JSON Server.
+     */
+    async function cadastrarLivro() {
+      const msgSucesso = document.getElementById('msg-sucesso');
+      const msgErro    = document.getElementById('msg-erro');
+ 
+      // Esconde mensagens anteriores
+      msgSucesso.classList.remove('visivel');
+      msgErro.classList.remove('visivel');
+ 
+      // Coleta e valida campos obrigatórios
+      const titulo       = document.getElementById('titulo').value.trim();
+      const autor        = document.getElementById('autor').value.trim();
+      const descCurta    = document.getElementById('descricaoCurta').value.trim();
+      const categoria    = document.getElementById('categoria').value;
+      const preco        = parseFloat(document.getElementById('preco').value);
+ 
+      if (!titulo || !autor || !descCurta || !categoria || isNaN(preco)) {
+        msgErro.textContent = '✗ Preencha todos os campos obrigatórios (marcados com *).';
+        msgErro.classList.add('visivel');
+        return;
+      }
+ 
+      // Monta objeto do livro
+      const tagsRaw = document.getElementById('tags').value;
+      const livro = {
+        titulo,
+        autor,
+        descricaoCurta: descCurta,
+        descricaoCompleta: document.getElementById('descricaoCompleta').value.trim() || descCurta,
+        imagem:    document.getElementById('imagem').value.trim() || '',
+        categoria,
+        preco,
+        tags: tagsRaw ? tagsRaw.split(',').map(t => t.trim()).filter(Boolean) : [],
+        destaque: document.getElementById('destaque').checked,
+        paginas:  parseInt(document.getElementById('paginas').value) || null,
+        editora:  document.getElementById('editora').value.trim() || null,
+        anoPublicacao: parseInt(document.getElementById('anoPublicacao').value) || null,
+        avaliacao: null
+      };
+ 
+      // POST para o JSON Server
+      try {
+        const resposta = await fetch('http://localhost:3000/livros', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(livro)
+        });
+ 
+        if (!resposta.ok) throw new Error(`HTTP ${resposta.status}`);
+ 
+        msgSucesso.classList.add('visivel');
+ 
+        // Limpa o formulário
+        document.querySelectorAll('input, select, textarea').forEach(el => {
+          if (el.type === 'checkbox') el.checked = false;
+          else el.value = '';
+        });
+ 
+      } catch (erro) {
+        console.error('Erro ao cadastrar:', erro);
+        msgErro.textContent = `✗ Erro: ${erro.message}. Verifique se o JSON Server está rodando em localhost:3000.`;
+        msgErro.classList.add('visivel');
+      }
+    }
+  </script>
+ 
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Livraria Atlântica</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Chart.js via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+ 
+  <!-- ===================== CABEÇALHO ===================== -->
+  <header class="cabecalho">
+    <div class="cabecalho-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-principal">Livraria Atlântica</span>
+        <span class="logo-sub">Est. desde 2024</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Acervo</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="cadastro_livro.html">Cadastrar</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+ 
+  <!-- ===================== HERO ===================== -->
+  <section class="dashboard-hero">
+    <div class="dashboard-hero-inner">
+      <p class="dashboard-hero-eyebrow">Análise do Acervo</p>
+      <h1 class="dashboard-hero-titulo">Dashboard</h1>
+      <p class="dashboard-hero-sub">Visualização dinâmica dos dados do acervo via Chart.js</p>
+    </div>
+  </section>
+ 
+  <!-- ===================== CONTEÚDO PRINCIPAL ===================== -->
+  <main>
+    <div class="secao" id="dashboard-conteudo">
+      <div class="dashboard-loading" id="loading">
+        <div class="estado-carregando-spinner"></div>
+        <p>Carregando dados do servidor…</p>
+      </div>
+    </div>
+  </main>
+ 
+  <!-- ===================== RODAPÉ ===================== -->
+  <footer class="rodape">
+    <p>
+      <strong>Livraria Atlântica</strong> &mdash;
+      Visualizações com <strong>Chart.js</strong> &mdash;
+      Dados via <code>localhost:3000/livros</code>
+    </p>
+  </footer>
+ 
+  <script>
+    const API_BASE = 'http://localhost:3000';
+ 
+    const PALETA = [
+      '#b5401e', '#d4a853', '#1a1208', '#7c6e5a',
+      '#a09080', '#c4b49a', '#6b5f4e', '#e2d8c9',
+    ];
+ 
+    async function fetchLivros() {
+      const res = await fetch(`${API_BASE}/livros`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res.json();
+    }
+ 
+    function processarDados(livros) {
+      const porCategoria = {};
+      const precoPorCategoria = {};
+ 
+      livros.forEach(livro => {
+        const cat = livro.categoria || 'Sem categoria';
+        const preco = Number(livro.preco) || 0;
+ 
+        porCategoria[cat] = (porCategoria[cat] || 0) + 1;
+ 
+        if (!precoPorCategoria[cat]) precoPorCategoria[cat] = { soma: 0, count: 0 };
+        precoPorCategoria[cat].soma += preco;
+        precoPorCategoria[cat].count += 1;
+      });
+ 
+      const mediaPreco = {};
+      Object.keys(precoPorCategoria).forEach(cat => {
+        const { soma, count } = precoPorCategoria[cat];
+        mediaPreco[cat] = parseFloat((soma / count).toFixed(2));
+      });
+ 
+      const precos = livros.map(l => Number(l.preco)).filter(p => p > 0);
+      const precoMedio = precos.length
+        ? (precos.reduce((a, b) => a + b, 0) / precos.length).toFixed(2) : 0;
+      const destaques = livros.filter(l => l.destaque).length;
+ 
+      return { porCategoria, mediaPreco, precoMedio, destaques };
+    }
+ 
+    function criarGraficoPizza(ctx, porCategoria) {
+      const labels = Object.keys(porCategoria);
+      const data   = Object.values(porCategoria);
+      const cores  = labels.map((_, i) => PALETA[i % PALETA.length]);
+ 
+      return new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels,
+          datasets: [{
+            data,
+            backgroundColor: cores,
+            borderColor: '#faf8f4',
+            borderWidth: 3,
+            hoverOffset: 8,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                padding: 16,
+                font: { family: "'Source Serif 4', Georgia, serif", size: 12 },
+                color: '#6b5f4e',
+                boxWidth: 14,
+                boxHeight: 14,
+              }
+            },
+            tooltip: {
+              callbacks: {
+                label: ctx => {
+                  const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+                  const pct = ((ctx.parsed / total) * 100).toFixed(1);
+                  return ` ${ctx.parsed} livro(s) — ${pct}%`;
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+ 
+    function criarGraficoBarras(ctx, mediaPreco) {
+      const entries = Object.entries(mediaPreco).sort((a, b) => b[1] - a[1]);
+      const labels  = entries.map(([cat]) => cat);
+      const data    = entries.map(([, val]) => val);
+      const cores   = labels.map((_, i) => PALETA[i % PALETA.length]);
+ 
+      return new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels,
+          datasets: [{
+            label: 'Preço médio (R$)',
+            data,
+            backgroundColor: cores,
+            borderRadius: 4,
+            borderSkipped: false,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          indexAxis: 'y',
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: ctx => ` R$ ${ctx.parsed.x.toFixed(2).replace('.', ',')}`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { color: '#e2d8c9' },
+              ticks: {
+                color: '#a09080',
+                font: { family: "'Source Serif 4', Georgia, serif", size: 11 },
+                callback: val => `R$ ${val}`
+              }
+            },
+            y: {
+              grid: { display: false },
+              ticks: {
+                color: '#6b5f4e',
+                font: { family: "'Source Serif 4', Georgia, serif", size: 12 },
+              }
+            }
+          }
+        }
+      });
+    }
+ 
+    function renderDashboard(livros) {
+      const dados = processarDados(livros);
+      const container = document.getElementById('dashboard-conteudo');
+ 
+      container.innerHTML = `
+        <div class="resumo-grid">
+          <div class="resumo-card">
+            <span class="resumo-label">Total de livros</span>
+            <span class="resumo-valor">${livros.length}</span>
+            <span class="resumo-detalhe">no acervo</span>
+          </div>
+          <div class="resumo-card">
+            <span class="resumo-label">Categorias</span>
+            <span class="resumo-valor">${Object.keys(dados.porCategoria).length}</span>
+            <span class="resumo-detalhe">diferentes</span>
+          </div>
+          <div class="resumo-card">
+            <span class="resumo-label">Preço médio</span>
+            <span class="resumo-valor">R$&nbsp;${Number(dados.precoMedio).toFixed(2).replace('.', ',')}</span>
+            <span class="resumo-detalhe">por livro</span>
+          </div>
+          <div class="resumo-card">
+            <span class="resumo-label">Em destaque</span>
+            <span class="resumo-valor">${dados.destaques}</span>
+            <span class="resumo-detalhe">livros marcados</span>
+          </div>
+        </div>
+ 
+        <div class="graficos-grid">
+          <div class="grafico-card">
+            <h2 class="grafico-titulo">Distribuição por Categoria</h2>
+            <p class="grafico-subtitulo">Quantidade de livros em cada categoria</p>
+            <div class="grafico-wrapper">
+              <canvas id="grafico-pizza"></canvas>
+            </div>
+          </div>
+          <div class="grafico-card">
+            <h2 class="grafico-titulo">Preço Médio por Categoria</h2>
+            <p class="grafico-subtitulo">Valor médio (R$) agrupado por categoria</p>
+            <div class="grafico-wrapper">
+              <canvas id="grafico-barras"></canvas>
+            </div>
+          </div>
+        </div>
+ 
+        <div class="tabela-card">
+          <div class="tabela-cabecalho">
+            <h2 class="tabela-titulo">Detalhamento por Categoria</h2>
+            <p class="tabela-subtitulo">Resumo quantitativo e financeiro do acervo</p>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Categoria</th>
+                <th>Qtd. Livros</th>
+                <th>Preço mínimo</th>
+                <th>Preço máximo</th>
+                <th>Preço médio</th>
+              </tr>
+            </thead>
+            <tbody id="tabela-corpo"></tbody>
+          </table>
+        </div>
+      `;
+ 
+      const tbody = document.getElementById('tabela-corpo');
+      Object.keys(dados.porCategoria).forEach((cat, i) => {
+        const livrosCat = livros.filter(l => (l.categoria || 'Sem categoria') === cat);
+        const precos = livrosCat.map(l => Number(l.preco)).filter(p => p > 0);
+        const min   = precos.length ? Math.min(...precos) : 0;
+        const max   = precos.length ? Math.max(...precos) : 0;
+        const media = dados.mediaPreco[cat] || 0;
+        const fmt   = v => `R$ ${v.toFixed(2).replace('.', ',')}`;
+ 
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><span class="badge-categoria" style="border-left: 3px solid ${PALETA[i % PALETA.length]}">${cat}</span></td>
+          <td>${dados.porCategoria[cat]}</td>
+          <td>${fmt(min)}</td>
+          <td>${fmt(max)}</td>
+          <td><strong>${fmt(media)}</strong></td>
+        `;
+        tbody.appendChild(tr);
+      });
+ 
+      criarGraficoPizza(document.getElementById('grafico-pizza'), dados.porCategoria);
+      criarGraficoBarras(document.getElementById('grafico-barras'), dados.mediaPreco);
+    }
+ 
+    function renderErro(erro) {
+      document.getElementById('dashboard-conteudo').innerHTML = `
+        <div class="estado-erro">
+          <p class="estado-erro-titulo">Não foi possível carregar os dados</p>
+          <p>Verifique se o JSON Server está rodando em <strong>localhost:3000</strong>.<br>
+             Execute: <code>npx json-server db.json</code></p>
+          <p><small>Detalhe: ${erro.message}</small></p>
+          <button class="btn-primario" onclick="init()">Tentar novamente</button>
+        </div>
+      `;
+    }
+ 
+    async function init() {
+      try {
+        const livros = await fetchLivros();
+        renderDashboard(livros);
+      } catch (erro) {
+        console.error('Erro ao carregar dashboard:', erro);
+        renderErro(erro);
+      }
+    }
+ 
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+ 
+</body>
+</html>

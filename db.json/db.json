@@ -1,0 +1,406 @@
+{
+  "livros": [
+    {
+      "id": 1,
+      "titulo": "O Senhor dos Anéis",
+      "autor": "J.R.R. Tolkien",
+      "descricaoCurta": "Uma épica jornada pela Terra-Média para destruir o Anel do Poder.",
+      "descricaoCompleta": "Uma das maiores obras da literatura fantástica, O Senhor dos Anéis acompanha o hobbit Frodo Bolseiro e seus companheiros na missão de destruir o Um Anel, artefato forjado pelo Senhor das Trevas Sauron. Com batalhas épicas, amizades profundas e um mundo riquíssimo em detalhe, esta trilogia redefiniu o gênero fantástico e permanece uma das obras mais influentes da história da literatura.",
+      "imagem": "https://covers.openlibrary.org/b/id/8743161-L.jpg",
+      "categoria": "Fantasia",
+      "preco": 89.9,
+      "tags": [
+        "fantasia",
+        "épico",
+        "clássico",
+        "aventura",
+        "magia"
+      ],
+      "destaque": true,
+      "paginas": 1178,
+      "editora": "HarperCollins",
+      "anoPublicacao": 1954,
+      "avaliacao": 4.9
+    },
+    {
+      "id": 2,
+      "titulo": "1984",
+      "autor": "George Orwell",
+      "descricaoCurta": "Em um futuro distópico, o Estado controla cada pensamento e ação.",
+      "descricaoCompleta": "1984 é um romance distópico que retrata um futuro totalitário onde o Partido controla absolutamente tudo: a história, a língua e até os pensamentos. Winston Smith, funcionário do governo, começa a questionar o sistema e se apaixona por Julia, numa história de resistência desesperante contra um poder opressor onipresente. Orwell criou conceitos que moldaram o debate político até hoje: o Grande Irmão, o Novilíngua e a doublethink.",
+      "imagem": "https://covers.openlibrary.org/b/id/8575708-L.jpg",
+      "categoria": "Ficção Científica",
+      "preco": 44.9,
+      "tags": [
+        "distopia",
+        "política",
+        "clássico",
+        "ficção científica",
+        "totalitarismo"
+      ],
+      "destaque": true,
+      "paginas": 328,
+      "editora": "Companhia das Letras",
+      "anoPublicacao": 1949,
+      "avaliacao": 4.8
+    },
+    {
+      "id": 3,
+      "titulo": "Dom Casmurro",
+      "autor": "Machado de Assis",
+      "descricaoCurta": "Bentinho narra sua vida e o amor por Capitu, a de olhos de ressaca.",
+      "descricaoCompleta": "Considerado o maior romance da literatura brasileira, Dom Casmurro é narrado por Bentinho, um homem que tenta reatar as duas pontas de sua vida para ver se o passado faz sentido. O narrador conta sua paixão por Capitu, a misteriosa e fascinante vizinha de 'olhos de ressaca', e a posterior suspeita de traição. Machado de Assis cria um dos narradores não-confiáveis mais célebres da literatura universal.",
+      "imagem": "https://covers.openlibrary.org/b/id/9255911-L.jpg",
+      "categoria": "Literatura Brasileira",
+      "preco": 34.9,
+      "tags": [
+        "clássico",
+        "romance",
+        "literatura brasileira",
+        "realismo",
+        "psicológico"
+      ],
+      "destaque": true,
+      "paginas": 256,
+      "editora": "Penguin Companhia",
+      "anoPublicacao": 1899,
+      "avaliacao": 4.7
+    },
+    {
+      "id": 4,
+      "titulo": "O Hobbit",
+      "autor": "J.R.R. Tolkien",
+      "descricaoCurta": "Bilbo Bolseiro embarca em uma aventura inesperada com anões e um mago.",
+      "descricaoCompleta": "A história que precedeu O Senhor dos Anéis, O Hobbit apresenta o hobbit Bilbo Bolseiro, que é convocado pelo mago Gandalf para uma aventura com treze anões liderados por Thorin Escudo de Carvalho. O objetivo? Recuperar o tesouro do dragão Smaug. Leve, cheio de humor e aventura, o livro é uma porta de entrada perfeita para o universo da Terra-Média e um clássico absoluto da literatura infantojuvenil e adulta.",
+      "imagem": "https://covers.openlibrary.org/b/id/8406786-L.jpg",
+      "categoria": "Fantasia",
+      "preco": 59.9,
+      "tags": [
+        "fantasia",
+        "aventura",
+        "clássico",
+        "dragões",
+        "tolkien"
+      ],
+      "destaque": false,
+      "paginas": 336,
+      "editora": "HarperCollins",
+      "anoPublicacao": 1937,
+      "avaliacao": 4.8
+    },
+    {
+      "id": 5,
+      "titulo": "A Revolução dos Bichos",
+      "autor": "George Orwell",
+      "descricaoCurta": "Animais de uma fazenda se rebelam contra os humanos num conto político brilhante.",
+      "descricaoCompleta": "A Revolução dos Bichos é uma fábula política onde os animais da Fazenda Solar se rebelam contra o fazendeiro Mr. Jones, sonhando com uma sociedade igualitária. Porém, gradualmente os porcos assumem o controle e reproduzem exatamente a opressão que queriam eliminar. A frase 'Todos os animais são iguais, mas alguns são mais iguais que outros' se tornou um dos mais célebres aforismos sobre totalitarismo e hipocrisia política.",
+      "imagem": "https://covers.openlibrary.org/b/id/8406802-L.jpg",
+      "categoria": "Ficção Científica",
+      "preco": 29.9,
+      "tags": [
+        "fábula",
+        "política",
+        "clássico",
+        "distopia",
+        "satira"
+      ],
+      "destaque": false,
+      "paginas": 152,
+      "editora": "Companhia das Letras",
+      "anoPublicacao": 1945,
+      "avaliacao": 4.6
+    },
+    {
+      "id": 6,
+      "titulo": "Cem Anos de Solidão",
+      "autor": "Gabriel García Márquez",
+      "descricaoCurta": "A saga da família Buendía em Macondo, onde o real e o mágico se fundem.",
+      "descricaoCompleta": "Obra máxima do realismo mágico latino-americano, Cem Anos de Solidão narra a história de sete gerações da família Buendía na fictícia cidade de Macondo. Gabriel García Márquez tece um tapete de acontecimentos extraordinários tratados com a naturalidade de fatos cotidianos: pragas de insônia, chuvas de flores amarelas, mulheres que sobem aos céus. Vencedor do Nobel de Literatura, o livro é considerado uma das maiores obras do século XX.",
+      "imagem": "https://covers.openlibrary.org/b/id/8224161-L.jpg",
+      "categoria": "Realismo Mágico",
+      "preco": 54.9,
+      "tags": [
+        "realismo mágico",
+        "família",
+        "latino-americano",
+        "épico",
+        "nobel"
+      ],
+      "destaque": true,
+      "paginas": 432,
+      "editora": "Record",
+      "anoPublicacao": 1967,
+      "avaliacao": 4.9
+    },
+    {
+      "id": 7,
+      "titulo": "O Pequeno Príncipe",
+      "autor": "Antoine de Saint-Exupéry",
+      "descricaoCurta": "Um piloto no deserto encontra um príncipe de outro planeta cheio de sabedoria.",
+      "descricaoCompleta": "O Pequeno Príncipe é o livro mais traduzido do mundo depois da Bíblia. Aparentemente uma história infantil, é na verdade uma profunda meditação sobre o que realmente importa na vida: o amor, a amizade, a saudade e o olhar da criança que os adultos perdem. O príncipe que vem do asteroide B-612 nos ensina que 'o essencial é invisível para os olhos', em uma narrativa poética e tocante que emociona todas as gerações.",
+      "imagem": "https://covers.openlibrary.org/b/id/8479576-L.jpg",
+      "categoria": "Literatura Infantojuvenil",
+      "preco": 39.9,
+      "tags": [
+        "clássico",
+        "infantojuvenil",
+        "filosofia",
+        "poético",
+        "amizade"
+      ],
+      "destaque": false,
+      "paginas": 96,
+      "editora": "Agir",
+      "anoPublicacao": 1943,
+      "avaliacao": 4.9
+    },
+    {
+      "id": 8,
+      "titulo": "Sapiens: Uma Breve História da Humanidade",
+      "autor": "Yuval Noah Harari",
+      "descricaoCurta": "Uma visão panorâmica e instigante sobre como o Homo sapiens dominou o planeta.",
+      "descricaoCompleta": "Sapiens é uma obra que reconta toda a história da humanidade, do surgimento do Homo sapiens na África até a era das biotecnologias. Harari explora como a capacidade de criar e compartilhar ficções coletivas — dinheiro, nações, religiões, empresas — permitiu que humanos cooperassem em escala sem precedentes e dominassem o planeta. Um livro que desafia nossas certezas e nos força a repensar quem somos e para onde vamos.",
+      "imagem": "https://covers.openlibrary.org/b/id/8442130-L.jpg",
+      "categoria": "Não-ficção",
+      "preco": 64.9,
+      "tags": [
+        "história",
+        "antropologia",
+        "ciência",
+        "humanidade",
+        "evolução"
+      ],
+      "destaque": true,
+      "paginas": 464,
+      "editora": "Companhia das Letras",
+      "anoPublicacao": 2011,
+      "avaliacao": 4.7
+    },
+    {
+      "id": 9,
+      "titulo": "O Alquimista",
+      "autor": "Paulo Coelho",
+      "descricaoCurta": "Santiago, um pastor andaluz, parte em busca de seu tesouro e de sua lenda pessoal.",
+      "descricaoCompleta": "O livro brasileiro mais vendido de todos os tempos e um dos maiores best-sellers mundiais, O Alquimista conta a história de Santiago, um jovem pastor que parte em busca de um tesouro físico e descobre uma jornada de autoconhecimento. Paulo Coelho tece uma narrativa sobre seguir os sonhos, ouvir o coração e ler os sinais do universo, com uma linguagem simples e simbólica que atravessa culturas e gerações em todo o mundo.",
+      "imagem": "https://covers.openlibrary.org/b/id/8442116-L.jpg",
+      "categoria": "Literatura Brasileira",
+      "preco": 44.9,
+      "tags": [
+        "autoconhecimento",
+        "filosofia",
+        "espiritualidade",
+        "aventura",
+        "sonhos"
+      ],
+      "destaque": false,
+      "paginas": 208,
+      "editora": "HarperCollins",
+      "anoPublicacao": 1988,
+      "avaliacao": 4.4
+    },
+    {
+      "id": 10,
+      "titulo": "Duna",
+      "autor": "Frank Herbert",
+      "descricaoCurta": "Paul Atreides chega ao planeta deserto Arrakis, único produtor da especiaria mais valiosa do universo.",
+      "descricaoCompleta": "Duna é considerado o maior clássico da ficção científica e o romance de ficção científica mais vendido de todos os tempos. Ambienta-se num futuro distante onde famílias nobres controlam planetas. Paul Atreides chega a Arrakis — o planeta deserto — para assumir o controle da produção de melange, a especiaria que estende a vida e permite viagem interestelar. Frank Herbert criou um universo de riqueza política, ecológica, religiosa e filosófica incomparável.",
+      "imagem": "https://covers.openlibrary.org/b/id/8442122-L.jpg",
+      "categoria": "Ficção Científica",
+      "preco": 79.9,
+      "tags": [
+        "ficção científica",
+        "épico",
+        "política",
+        "ecologia",
+        "clássico"
+      ],
+      "destaque": true,
+      "paginas": 688,
+      "editora": "Aleph",
+      "anoPublicacao": 1965,
+      "avaliacao": 4.8
+    },
+    {
+      "id": 11,
+      "titulo": "Memórias Póstumas de Brás Cubas",
+      "autor": "Machado de Assis",
+      "descricaoCurta": "Um defunto autor narra sua própria vida com ironia e genialidade inigualáveis.",
+      "descricaoCompleta": "Narrado por um defunto-autor, Brás Cubas conta sua vida após a morte com total liberdade e ironia corrosiva. Considerado o primeiro romance realista da literatura brasileira, o livro inaugura uma forma completamente nova de narrar: fragmentada, digressiva, com o narrador interrompendo a história para filosofar sobre a condição humana. Machado de Assis estava séculos à frente de seu tempo com esta obra revolucionária.",
+      "imagem": "https://covers.openlibrary.org/b/id/9255912-L.jpg",
+      "categoria": "Literatura Brasileira",
+      "preco": 32.9,
+      "tags": [
+        "clássico",
+        "humor",
+        "realismo",
+        "literatura brasileira",
+        "ironia"
+      ],
+      "destaque": false,
+      "paginas": 264,
+      "editora": "Penguin Companhia",
+      "anoPublicacao": 1881,
+      "avaliacao": 4.7
+    },
+    {
+      "id": 12,
+      "titulo": "Cosmos",
+      "autor": "Carl Sagan",
+      "descricaoCurta": "Uma viagem apaixonante pelo universo e pela história da ciência humana.",
+      "descricaoCompleta": "Cosmos é um dos livros de divulgação científica mais importantes já escritos. Carl Sagan leva o leitor numa jornada pelo universo e pela história do pensamento científico humano, com uma prosa poética e um entusiasmo genuíno que raramente se encontra na ciência popular. Capaz de fazer qualquer pessoa se sentir parte de algo grandioso, Cosmos é ao mesmo tempo uma obra de ciência, filosofia e humanismo profundamente tocante.",
+      "imagem": "https://covers.openlibrary.org/b/id/8442118-L.jpg",
+      "categoria": "Não-ficção",
+      "preco": 69.9,
+      "tags": [
+        "ciência",
+        "astronomia",
+        "divulgação científica",
+        "universo",
+        "filosofia"
+      ],
+      "destaque": false,
+      "paginas": 365,
+      "editora": "Companhia das Letras",
+      "anoPublicacao": 1980,
+      "avaliacao": 4.8
+    }
+  ],
+  "categorias": [
+    {
+      "id": 1,
+      "nome": "Fantasia",
+      "icone": "🧙",
+      "cor": "#7c3aed"
+    },
+    {
+      "id": 2,
+      "nome": "Ficção Científica",
+      "icone": "🚀",
+      "cor": "#0891b2"
+    },
+    {
+      "id": 3,
+      "nome": "Literatura Brasileira",
+      "icone": "🌿",
+      "cor": "#059669"
+    },
+    {
+      "id": 4,
+      "nome": "Realismo Mágico",
+      "icone": "✨",
+      "cor": "#d97706"
+    },
+    {
+      "id": 5,
+      "nome": "Não-ficção",
+      "icone": "📚",
+      "cor": "#dc2626"
+    },
+    {
+      "id": 6,
+      "nome": "Literatura Infantojuvenil",
+      "icone": "⭐",
+      "cor": "#f59e0b"
+    }
+  ],
+  "comentarios": [
+    {
+      "id": 1,
+      "livroId": 1,
+      "usuario": "Ana Paula",
+      "texto": "Uma obra que muda a vida. Li três vezes e sempre descubro algo novo.",
+      "nota": 5
+    },
+    {
+      "id": 2,
+      "livroId": 1,
+      "usuario": "Carlos M.",
+      "texto": "Tolkien criou um mundo tão rico que parece real. Imperdível.",
+      "nota": 5
+    },
+    {
+      "id": 3,
+      "livroId": 2,
+      "usuario": "Fernanda L.",
+      "texto": "Assustadoramente atual. Orwell era um visionário.",
+      "nota": 5
+    },
+    {
+      "id": 4,
+      "livroId": 6,
+      "usuario": "Roberto K.",
+      "texto": "García Márquez é um deus da literatura. Cada página é uma obra de arte.",
+      "nota": 5
+    },
+    {
+      "id": 5,
+      "livroId": 8,
+      "usuario": "Juliana T.",
+      "texto": "Mudou completamente a forma como vejo a história da humanidade.",
+      "nota": 4
+    },
+    {
+      "id": 6,
+      "livroId": 10,
+      "usuario": "Marcelo F.",
+      "texto": "O mundo mais elaborado que já vi em ficção científica. Épico.",
+      "nota": 5
+    }
+  ],
+  "favoritos": [
+    {
+      "id": 1,
+      "livroId": 1
+    },
+    {
+      "id": 2,
+      "livroId": 6
+    },
+    {
+      "id": 3,
+      "livroId": 7
+    },
+    {
+      "id": 4,
+      "livroId": 10
+    }
+  ],
+  "avaliacoes": [
+    {
+      "id": 1,
+      "livroId": 1,
+      "nota": 4.9,
+      "totalVotos": 2847
+    },
+    {
+      "id": 2,
+      "livroId": 2,
+      "nota": 4.8,
+      "totalVotos": 3201
+    },
+    {
+      "id": 3,
+      "livroId": 3,
+      "nota": 4.7,
+      "totalVotos": 1456
+    },
+    {
+      "id": 4,
+      "livroId": 6,
+      "nota": 4.9,
+      "totalVotos": 2103
+    },
+    {
+      "id": 5,
+      "livroId": 8,
+      "nota": 4.7,
+      "totalVotos": 4521
+    },
+    {
+      "id": 6,
+      "livroId": 10,
+      "nota": 4.8,
+      "totalVotos": 1987
+    }
+  ]
+}

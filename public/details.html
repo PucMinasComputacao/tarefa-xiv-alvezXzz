@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Livraria Atlântica — Acervo</title>
+  <title>Detalhes do Livro — Livraria Atlântica</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -24,39 +24,28 @@
     </div>
   </header>
  
-  <!-- ===================== HERO ===================== -->
-  <section class="hero">
-    <div class="hero-inner">
-      <p class="hero-eyebrow">Acervo Digital</p>
-      <h1 class="hero-titulo">
-        Descubra sua próxima<br>
-        <em>grande leitura.</em>
-      </h1>
-      <p class="hero-subtitulo">
-        Clássicos da literatura universal, brasileira e obras de não-ficção
-        cuidadosamente selecionadas para você.
-      </p>
-    </div>
-  </section>
- 
-  <!-- ===================== CATÁLOGO ===================== -->
+  <!-- ===================== CONTEÚDO PRINCIPAL ===================== -->
   <main>
-    <div class="secao">
-      <div class="secao-cabecalho">
-        <h2 class="secao-titulo">Todos os Livros</h2>
-        <span class="secao-contagem" id="contagem-livros">Carregando…</span>
-      </div>
+    <div class="detalhe-container">
  
-      <!-- Grid onde os cards são injetados via JS -->
-      <div class="grid-livros" id="grid-livros">
+      <!-- Link de voltar -->
+      <a href="index.html" class="detalhe-voltar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 5l-7 7 7 7"/>
+        </svg>
+        Voltar ao acervo
+      </a>
  
-        <!-- Estado de carregamento inicial -->
-        <div class="estado-carregando" id="estado-carregando">
+      <!-- Área de conteúdo dinâmico injetado pelo details.js -->
+      <div id="detalhe-conteudo">
+        <!-- Estado inicial: spinner de carregamento -->
+        <div class="estado-carregando">
           <div class="estado-carregando-spinner"></div>
-          <p>Buscando livros no servidor…</p>
+          <p>Carregando informações do livro…</p>
         </div>
- 
       </div>
+ 
     </div>
   </main>
  
@@ -69,6 +58,6 @@
     </p>
   </footer>
  
-  <script src="script.js"></script>
+  <script src="details.js"></script>
 </body>
 </html>
